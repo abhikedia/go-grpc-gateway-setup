@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option go_package = "github.com/abhikedia/go-grpc-gateway-setup/protogen/golang";
+
+import "google/api/annotations.proto";
+
+message StringMessage {
+  string value = 1;
+}
+
+service YourService {
+    rpc Echo(StringMessage) returns (StringMessage) {
+        option (google.api.http) = {
+          post: "/v1/example/echo"
+          body: "*"
+        };
+    }
+}
